@@ -54,7 +54,7 @@ You can see the documentation in the project home page:
 
 == Source Code
 
-You can clone the repository from GitHub:
+You can clone the repository from GitHub (http://github.com/dmoreno/yaxml/tree/master):
 
  # git clone git@github.com:dmoreno/yaxml.git
 
