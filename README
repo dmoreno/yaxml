@@ -1,0 +1,52 @@
+= YAXML Module
+ 
+This code is released under LGPL. YAXML module make the next conversions:
+
+ * YAML -> YAXML
+ * JSON -> YAXML
+ * YAXML -> YAML
+ * YAXML -> JSON
+
+All conversions can use a file or a string as source.
+
+You can use this module in two ways:
+
+1) Creating a Yaxml object
+   xml = Yaxml.new 'file.yml'
+   xml.write( $stdout, 2)
+   xml.to_json
+   xml.to_yaml
+
+2) Using static methods of Yaxml module
+   xml = Yaxml::yaml2yaxml( 'file.yml' )
+   xml.write( $stdout, 2)
+
+   Also, you can use:
+   xml  = Yaxml::json2yaxml( { numbers: [ 1, 2, 3 ]} )
+   yaml = Yaxml::yaxml2yaml( 'file.yaxml' )
+   json = Yaxml::yaxml2json( 'file.yaxml' )
+
+YAXML is <b>standalone library</b>.  It requires no other libraries.  Just Ruby!
+
+Author:: Diego Moreno (dmoreno AT dit.upm.es)
+License:: GNU Lesser General Public License (aka LGPL)
+
+== Installing YAXML
+
+You may get the latest stable version from Rubyforge.
+
+  $ gem install yaxml
+
+== Loading YAXML
+
+You have probably got the gem, right?  To load YAXML:
+
+ require 'rubygems'
+ require 'yaxml'
+
+== Documentation
+
+You can see the documentation in the project home page:
+
+{YAXML Gem Homepage}[http://yaxml.rubyforge.org]
+

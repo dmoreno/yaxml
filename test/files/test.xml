@@ -1,0 +1,5 @@
+<invoice xmlns:yaml='http://yaml.org/xml'><tax>251.42</tax><number>34843</number><comments>Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.</comments><ship-to><address><city>Royal Oak</city><postal>48046</postal><lines>458 Walkman Dr.
+Suite #292
+</lines><state>MI</state></address><family>Dumars</family><given>Chris</given></ship-to><bill-to><address><city>Royal Oak</city><postal>48046</postal><lines>458 Walkman Dr.
+Suite #292
+</lines><state>MI</state></address><family>Dumars</family><given>Chris</given></bill-to><total>4443.52</total><date>2001-01-23</date><product><_><price>450.0</price><quantity>4</quantity><sku>BL394D</sku><description>Basketball</description></_><_><price>2392.0</price><quantity>1</quantity><sku>BL4438H</sku><description>Super Hoop</description></_></product></invoice>

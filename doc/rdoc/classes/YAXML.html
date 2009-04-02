@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: YAXML</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">YAXML</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/yaxml_rb.html">
+                lib/yaxml.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000002">json2yaxml</a>&nbsp;&nbsp;
+      <a href="#M000001">yaml2yaxml</a>&nbsp;&nbsp;
+      <a href="#M000004">yaxml2json</a>&nbsp;&nbsp;
+      <a href="#M000003">yaxml2yaml</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Class <a href="YAXML/Yaxml.html" class="link">YAXML::Yaxml</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">DEFAULT_ROOT_NAME</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;root&quot;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Default root name
+
+</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">NAMESPACE</td>
+          <td>=</td>
+          <td class="context-item-value">&quot;http://yaml.org/xml&quot;</td>
+          <td width="3em">&nbsp;</td>
+          <td class="context-item-desc">
+Namespace for <a href="YAXML.html">YAXML</a>
+
+</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">json2yaxml</span><span class="method-args">( json_to_encode, options={} )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Conversion JSON -&gt; <a href="YAXML.html">YAXML</a>
+</p>
+<table>
+<tr><td valign="top">source:</td><td>It can be a Array or Hash object or a file name.
+
+</td></tr>
+</table>
+<p>
+options::
+</p>
+<ul>
+<li><tt>:root_name</tt> It is the name of the root tag in the <a
+href="YAXML.html">YAXML</a> document. Defaults to
+<tt>DEFAULT_ROOT_NAME</tt>
+
+</li>
+</ul>
+<p>
+Example of use:
+</p>
+<pre>
+  json = {&quot;one&quot; =&gt; 1, &quot;two&quot; =&gt; 2.0, &quot;three&quot; =&gt; [ &quot;apple&quot;, &quot;pear&quot;], &quot;four&quot; =&gt; {&quot;aa&quot; =&gt; 11, &quot;bb&quot; =&gt; 22}}
+  doc = YAXML.json2yaxml json
+  doc.write( $stdout, 2 )
+  #-&gt; &lt;root xmlns:yaml='http://yaml.org/xml'&gt;
+        &lt;three&gt;
+          &lt;_&gt;apple&lt;/_&gt;
+          &lt;_&gt;pear&lt;/_&gt;
+        &lt;/three&gt;
+        &lt;two&gt;2.0&lt;/two&gt;
+        &lt;one&gt;1&lt;/one&gt;
+        &lt;four&gt;
+          &lt;bb&gt;22&lt;/bb&gt;
+          &lt;aa&gt;11&lt;/aa&gt;
+        &lt;/four&gt;
+      &lt;/root&gt;
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/yaxml.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">json2yaxml</span>( <span class="ruby-identifier">json_to_encode</span>, <span class="ruby-identifier">options</span>={} )
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">json_to_encode</span>
+    
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root_name</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_ROOT_NAME</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:parent</span>]
+      <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:parent</span>] = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root_name</span>]
+      <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:parent</span>].<span class="ruby-identifier">attributes</span>[<span class="ruby-value str">&quot;xmlns:yaml&quot;</span>] = <span class="ruby-constant">NAMESPACE</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">parent</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:parent</span>]
+    
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">Hash</span>
+      <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">each_pair</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> <span class="ruby-operator">|</span>
+        <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">Symbol</span>
+        <span class="ruby-identifier">el</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">json2yaxml</span>( <span class="ruby-identifier">value</span>, {<span class="ruby-identifier">:parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">el</span>} )
+        <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">result</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword kw">end</span>
+     
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">Array</span>
+      <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">|</span>
+        <span class="ruby-identifier">el</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>.<span class="ruby-identifier">new</span> <span class="ruby-value str">&quot;_&quot;</span>
+        <span class="ruby-identifier">result</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">json2yaxml</span>( <span class="ruby-identifier">x</span>, {<span class="ruby-identifier">:parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">el</span>})
+        <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">add</span> <span class="ruby-identifier">result</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">String</span>
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">json_to_encode</span>
+
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Float</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Date</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
+      <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">text</span> = <span class="ruby-identifier">json_to_encode</span>.<span class="ruby-identifier">to_s</span>
+     
+    <span class="ruby-keyword kw">end</span>
+     
+    <span class="ruby-identifier">parent</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">yaml2yaxml</span><span class="method-args">( source, options={} )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Conversion YAML -&gt; <a href="YAXML.html">YAXML</a>
+</p>
+<table>
+<tr><td valign="top">source:</td><td>It can be a YAML file in a String or a file name.
+
+</td></tr>
+</table>
+<p>
+options::
+</p>
+<ul>
+<li><tt>:root_name</tt> It is the name of the root tag in the <a
+href="YAXML.html">YAXML</a> document. Defaults to
+<tt>DEFAULT_ROOT_NAME</tt>
+
+</li>
+</ul>
+<p>
+Example of use:
+</p>
+<pre>
+  test.yml content
+     one: 1
+     two: 2.0
+     three:
+       - apple
+       - pear
+     four:
+       aa: 11
+       bb: 22
+
+  doc = YAXML.yaml2yaxml &quot;test.yml&quot;
+  doc.write( $stdout, 2 )
+  #-&gt; &lt;root xmlns:yaml='http://yaml.org/xml'&gt;
+        &lt;three&gt;
+          &lt;_&gt;apple&lt;/_&gt;
+          &lt;_&gt;pear&lt;/_&gt;
+        &lt;/three&gt;
+        &lt;two&gt;2.0&lt;/two&gt;
+        &lt;one&gt;1&lt;/one&gt;
+        &lt;four&gt;
+          &lt;bb&gt;22&lt;/bb&gt;
+          &lt;aa&gt;11&lt;/aa&gt;
+        &lt;/four&gt;
+      &lt;/root&gt;
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/yaxml.rb, line 143</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaml2yaxml</span>( <span class="ruby-identifier">source</span>, <span class="ruby-identifier">options</span>={} )
+
+    <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:root_name</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">DEFAULT_ROOT_NAME</span>
+
+    <span class="ruby-identifier">json</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">is_a?</span><span class="ruby-constant">String</span>
+             <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span><span class="ruby-identifier">source</span>
+               <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load_file</span>( <span class="ruby-identifier">source</span> ) <span class="ruby-comment cmt"># is a file</span>
+             <span class="ruby-keyword kw">else</span>
+               <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>( <span class="ruby-identifier">source</span> ) <span class="ruby-comment cmt"># is a string</span>
+             <span class="ruby-keyword kw">end</span>
+           <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
+             <span class="ruby-identifier">source</span>
+           <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">el</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">json2yaxml</span>( <span class="ruby-identifier">json</span>, <span class="ruby-identifier">options</span> )
+    <span class="ruby-identifier">doc</span> = <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">add_element</span> <span class="ruby-identifier">el</span>
+    <span class="ruby-identifier">doc</span>
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">yaxml2json</span><span class="method-args">( source )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Conversion <a href="YAXML.html">YAXML</a> -&gt; JSON
+</p>
+<table>
+<tr><td valign="top">source:</td><td>It can be a <a href="YAXML.html">YAXML</a> file in a String or a file name.
+
+</td></tr>
+</table>
+<p>
+Example of use:
+</p>
+<pre>
+  test.xml content
+      &lt;root xmlns:yaml='http://yaml.org/xml'&gt;
+        &lt;three&gt;
+          &lt;_&gt;apple&lt;/_&gt;
+          &lt;_&gt;pear&lt;/_&gt;
+        &lt;/three&gt;
+        &lt;two&gt;2.0&lt;/two&gt;
+        &lt;one&gt;1&lt;/one&gt;
+        &lt;four&gt;
+          &lt;bb&gt;22&lt;/bb&gt;
+          &lt;aa&gt;11&lt;/aa&gt;
+        &lt;/four&gt;
+      &lt;/root&gt;
+
+  json = YAXML.yaxml2json &quot;test.xml&quot;
+  puts json.inspect
+  #-&gt; {&quot;one&quot; =&gt; 1, &quot;two&quot; =&gt; 2.0, &quot;three&quot; =&gt; [ &quot;apple&quot;, &quot;pear&quot;], &quot;four&quot; =&gt; {&quot;aa&quot; =&gt; 11, &quot;bb&quot; =&gt; 22}}
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/yaxml.rb, line 287</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaxml2json</span>( <span class="ruby-identifier">source</span> )
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">source</span>
+
+    <span class="ruby-identifier">xml_node</span> = <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">kind_of?</span><span class="ruby-constant">String</span>
+                 <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span><span class="ruby-identifier">source</span>
+                   <span class="ruby-identifier">yaxml_string</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-identifier">source</span>, <span class="ruby-value str">&quot;r&quot;</span> ).<span class="ruby-identifier">read</span>
+                 <span class="ruby-keyword kw">else</span>
+                   <span class="ruby-identifier">yaxml_string</span> = <span class="ruby-identifier">source</span>
+                 <span class="ruby-keyword kw">end</span>        
+                 <span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">yaxml_string</span>
+
+               <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">kind_of?</span><span class="ruby-constant">REXML</span><span class="ruby-operator">::</span><span class="ruby-constant">Element</span>
+                 <span class="ruby-identifier">source</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">source</span>.<span class="ruby-identifier">elements</span>[<span class="ruby-value">1</span>]
+                 
+               <span class="ruby-keyword kw">else</span>
+                 <span class="ruby-keyword kw">nil</span>
+               <span class="ruby-keyword kw">end</span>
+     
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaxmlnode2json</span> <span class="ruby-identifier">xml_node</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">yaxml2yaml</span><span class="method-args">( source )</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Conversion <a href="YAXML.html">YAXML</a> -&gt; YAML
+</p>
+<table>
+<tr><td valign="top">source:</td><td>It can be a <a href="YAXML.html">YAXML</a> file in a String or a file name.
+
+</td></tr>
+</table>
+<p>
+Example of use:
+</p>
+<pre>
+  test.xml content
+      &lt;root xmlns:yaml='http://yaml.org/xml'&gt;
+        &lt;three&gt;
+          &lt;_&gt;apple&lt;/_&gt;
+          &lt;_&gt;pear&lt;/_&gt;
+        &lt;/three&gt;
+        &lt;two&gt;2.0&lt;/two&gt;
+        &lt;one&gt;1&lt;/one&gt;
+        &lt;four&gt;
+          &lt;bb&gt;22&lt;/bb&gt;
+          &lt;aa&gt;11&lt;/aa&gt;
+        &lt;/four&gt;
+      &lt;/root&gt;
+
+  yaml = YAXML.yaxml2yaml &quot;test.xml&quot;
+  puts yaml
+  #-&gt; one: 1
+      two: 2.0
+      three:
+        - apple
+        - pear
+      four:
+        aa: 11
+        bb: 22
+</pre>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/yaxml.rb, line 260</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaxml2yaml</span>( <span class="ruby-identifier">source</span> )
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">yaxml2json</span>( <span class="ruby-identifier">source</span> ).<span class="ruby-identifier">to_yaml</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

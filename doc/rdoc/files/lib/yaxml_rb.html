@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: yaxml.rb</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <div id="fileHeader">
+    <h1>yaxml.rb</h1>
+    <table class="header-table">
+    <tr class="top-aligned-row">
+      <td><strong>Path:</strong></td>
+      <td>lib/yaxml.rb
+      </td>
+    </tr>
+    <tr class="top-aligned-row">
+      <td><strong>Last Update:</strong></td>
+      <td>Wed Apr 01 10:58:18 +0200 2009</td>
+    </tr>
+    </table>
+  </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+<a href="../../classes/YAXML.html">YAXML</a> Module
+</p>
+<p>
+This code is released under LGPL.
+</p>
+<p>
+This module make the next conversions:
+</p>
+<ul>
+<li>YAML -&gt; <a href="../../classes/YAXML.html">YAXML</a>
+
+</li>
+<li>JSON -&gt; <a href="../../classes/YAXML.html">YAXML</a>
+
+</li>
+<li><a href="../../classes/YAXML.html">YAXML</a> -&gt; YAML
+
+</li>
+<li><a href="../../classes/YAXML.html">YAXML</a> -&gt; JSON
+
+</li>
+</ul>
+<p>
+All conversions can use a file or a string as source.
+</p>
+<p>
+You can use this module in two ways:
+</p>
+<p>
+1) Creating a Yaxml object
+</p>
+<pre>
+   xml = Yaxml.new 'file.yml'
+   xml.write( $stdout, 2)
+   xml.to_json
+   xml.to_yaml
+</pre>
+<p>
+2) Using static methods of Yaxml module
+</p>
+<pre>
+   xml = Yaxml::yaml2yaxml( 'file.yml' )
+   xml.write( $stdout, 2)
+
+   Also, you can use:
+   xml  = Yaxml::json2yaxml( { numbers: [ 1, 2, 3 ]} )
+   yaml = Yaxml::yaxml2yaml( 'file.yaxml' )
+   json = Yaxml::yaxml2json( 'file.yaxml' )
+</pre>
+<table>
+<tr><td valign="top">Author:</td><td>Diego Moreno (dmoreno@dit.upm.es)
+
+</td></tr>
+<tr><td valign="top">License:</td><td>GNU Lesser General Public License (aka LGPL)
+
+</td></tr>
+</table>
+
+    </div>
+
+    <div id="requires-list">
+      <h3 class="section-bar">Required files</h3>
+
+      <div class="name-list">
+      rexml/document&nbsp;&nbsp;
+      yaml&nbsp;&nbsp;
+      </div>
+    </div>
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

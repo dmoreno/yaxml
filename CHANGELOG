@@ -1,0 +1,8 @@
+= 1.0
+=== 25th March, 2009
+* First stable version
+* Conversion YAML -> YAXML
+* Conversion JSON -> YAXML
+* Conversion YAXML -> YAML
+* Conversion YAXML -> JSON
+* Module accepts strings and file names as sources.
