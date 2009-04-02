@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Thu Apr 02 10:31:14 +0200 2009</td>
+      <td>Thu Apr 02 11:46:47 +0200 2009</td>
     </tr>
     </table>
   </div>
@@ -71,8 +71,16 @@
     <div id="description">
       <h1><a href="../classes/YAXML.html">YAXML</a> Module</h1>
 <p>
+<a href="../classes/YAXML.html">YAXML</a> Parser allows to convert <a
+href="../classes/YAXML.html">YAXML</a> files to YAML files or JSON
+expressions. It also permits reverse conversion, from YAML files and JSON
+expressions to <a href="../classes/YAXML.html">YAXML</a> files. This parser
+is based on the XML Binding for YAML proposed by YAML.org <a
+href="http://yaml.org/xml.html">yaml.org/xml.html</a>
+</p>
+<p>
 This code is released under LGPL. <a href="../classes/YAXML.html">YAXML</a>
-module make the next conversions:
+module makes the following conversions:
 </p>
 <pre>
  * YAML -&gt; YAXML
@@ -81,10 +89,10 @@ module make the next conversions:
  * YAXML -&gt; JSON
 </pre>
 <p>
-All conversions can use a file or a string as source.
+And everywhere you can use a file or a string as source.
 </p>
 <p>
-You can use this module in two ways:
+The module can be used in two ways:
 </p>
 <p>
 1) Creating a Yaxml object
@@ -102,14 +110,14 @@ You can use this module in two ways:
    xml = Yaxml::yaml2yaxml( 'file.yml' )
    xml.write( $stdout, 2)
 
-   Also, you can use:
+   Furthermore, you can use:
    xml  = Yaxml::json2yaxml( { numbers: [ 1, 2, 3 ]} )
    yaml = Yaxml::yaxml2yaml( 'file.yaxml' )
    json = Yaxml::yaxml2json( 'file.yaxml' )
 </pre>
 <p>
-<a href="../classes/YAXML.html">YAXML</a> is <b>standalone library</b>. It
-requires no other libraries. Just Ruby!
+<a href="../classes/YAXML.html">YAXML</a> is a <b>standalone library</b>.
+It requires no other libraries. Just Ruby!
 </p>
 <table>
 <tr><td valign="top">Author:</td><td>Diego Moreno (dmoreno AT dit.upm.es)
@@ -128,7 +136,7 @@ You may get the latest stable version from Rubyforge.
 </pre>
 <h2>Loading <a href="../classes/YAXML.html">YAXML</a></h2>
 <p>
-You have probably got the gem, right? To load <a
+You do have probably got the gem, right? To load <a
 href="../classes/YAXML.html">YAXML</a>:
 </p>
 <pre>
