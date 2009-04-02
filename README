@@ -1,15 +1,17 @@
 = YAXML Module
+
+YAXML Parser allows to convert YAXML files to YAML files or JSON expressions. It also permits reverse conversion, from YAML files and JSON expressions to YAXML files. This parser is based on the XML Binding for YAML proposed by YAML.org http://yaml.org/xml.html
  
-This code is released under LGPL. YAXML module make the next conversions:
+This code is released under LGPL. YAXML module makes the following conversions:
 
  * YAML -> YAXML
  * JSON -> YAXML
  * YAXML -> YAML
  * YAXML -> JSON
 
-All conversions can use a file or a string as source.
+And everywhere you can use a file or a string as source.
 
-You can use this module in two ways:
+The module can be used in two ways:
 
 1) Creating a Yaxml object
    xml = Yaxml.new 'file.yml'
@@ -21,12 +23,12 @@ You can use this module in two ways:
    xml = Yaxml::yaml2yaxml( 'file.yml' )
    xml.write( $stdout, 2)
 
-   Also, you can use:
+   Furthermore, you can use:
    xml  = Yaxml::json2yaxml( { numbers: [ 1, 2, 3 ]} )
    yaml = Yaxml::yaxml2yaml( 'file.yaxml' )
    json = Yaxml::yaxml2json( 'file.yaxml' )
 
-YAXML is <b>standalone library</b>.  It requires no other libraries.  Just Ruby!
+YAXML is a <b>standalone library</b>.  It requires no other libraries.  Just Ruby!
 
 Author:: Diego Moreno (dmoreno AT dit.upm.es)
 License:: GNU Lesser General Public License (aka LGPL)
@@ -39,7 +41,7 @@ You may get the latest stable version from Rubyforge.
 
 == Loading YAXML
 
-You have probably got the gem, right?  To load YAXML:
+You do have probably got the gem, right?  To load YAXML:
 
  require 'rubygems'
  require 'yaxml'
@@ -49,4 +51,10 @@ You have probably got the gem, right?  To load YAXML:
 You can see the documentation in the project home page:
 
 {YAXML Gem Homepage}[http://yaxml.rubyforge.org]
+
+== Source Code
+
+You can clone the repository from GitHub:
+
+ # git clone git@github.com:dmoreno/yaxml.git
 
