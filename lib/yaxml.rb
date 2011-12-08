@@ -316,7 +316,7 @@ module YAXML
                end
 
     xml_node.elements.each do |el|
-      new_element = (el.has_elements?)? self.yaxmlnode2json( el ) : el.text.strip
+      new_element = (el.has_elements?)? self.yaxmlnode2json( el ) :  el.text ? el.text.strip : ""
       self.add_to_parent( new_element, parent, first_element, el.name )
     end
     
