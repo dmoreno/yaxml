@@ -8,7 +8,7 @@ include FileUtils
 
 NAME = "yaxml"
 REV = `svn info`[/Revision: (\d+)/, 1] rescue nil
-VERS = ENV['VERSION'] || "0.0.9" + (REV ? ".#{REV}" : "")
+VERS = ENV['VERSION'] || "0.1" + (REV ? ".#{REV}" : "")
 PKG = "#{NAME}-#{VERS}"
 RDOC_OPTS = ['--quiet', '--title', 'The YAXML Module Reference', '--main', 'README', '--inline-source']
 PKG_FILES = %w(CHANGELOG LICENSE README Rakefile) + Dir.glob("{doc,test,lib}/**/*") 
